@@ -64,6 +64,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
+	pass
 
 
 
