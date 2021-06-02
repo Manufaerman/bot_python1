@@ -13,6 +13,7 @@ bot = telebot.TeleBot(TOKEN)
 
 
 users = {"id":"actions"}
+user_id={"id"}
 
 
 
@@ -21,10 +22,10 @@ def send_welcome(message):
 		bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
 						  " text /buy to see the new propertys in sell or if you are thinking"
 							  "in make tourism in madrid /tourism to si or properties in rent"
-							  "or /help if you have any hesitatation",open('smart-2.png', 'rb'))
+							  "or /help if you have any hesitatation")
 		photo = open('smart-2.png', 'rb')
-		bot.reply_to(message, photo)
-		bot.reply_to(message, "FILEID")
+		bot.send_photo(user_id, photo)
+
 
 
 @bot.message_handler(commands=['help'])
