@@ -23,8 +23,8 @@ def send_welcome(message):
 							  "in make tourism in madrid /tourism to si or properties in rent"
 							  "or /help if you have any hesitatation")
 		photo = open('smart-2.png', 'rb')
-		bot.send_photo(chat_id, photo)
-		bot.send_photo(chat_id, "FILEID")
+		bot.reply_to(message, photo)
+		bot.reply_to(message, "FILEID")
 
 
 @bot.message_handler(commands=['help'])
