@@ -14,8 +14,8 @@ bot = telebot.TeleBot(TOKEN)
 parent_dir = os.getcwd()
 dir_name = "mail.txt"
 path = os.path.join(parent_dir,dir_name)
-
 users = {"id":"actions"}
+
 @bot.message_handler(func=lambda x: True)
 def start_message(message):
 	text_from_user = message.json["text"]
@@ -27,7 +27,7 @@ def start_message(message):
 		for i in content:
 			bot.send_message(chat_id,f"mail, {i}")
 
-
+'''
 @bot.message_handler(func=lambda x: x.text.startwith("donde"))
 def start_message(message):
 
@@ -41,7 +41,7 @@ def start_message(message):
 		for i in content:
 			bot.send_message(chat_id,f"mail, {i}")
 
-
+'''
 
 
 
