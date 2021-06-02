@@ -10,10 +10,11 @@ TOKEN = "1852061994:AAG-pWZsliYmB2jz7RHfSyN0alHfT8y96ok"
 chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
 
-print(os.getcwd())
-parent_dir="/Users/manuelacostafaerman/Desktop/krok/Oleg/venv/bin/python /Users/manuelacostafaerman/Desktop/krok/Oleg/botPython2"
+
+parent_dir = os.getcwd()
 dir_name = "mail.txt"
 path = os.path.join(parent_dir,dir_name)
+
 
 @bot.message_handler(func=lambda x: True)
 def start_message(message):
