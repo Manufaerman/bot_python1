@@ -1,7 +1,7 @@
 import os
 import telebot
 from flask import Flask, request
-from telebot import types
+
 
 #"ESTE ES EL NUEVO BOT"
 
@@ -10,12 +10,22 @@ TOKEN = "1852061994:AAG-pWZsliYmB2jz7RHfSyN0alHfT8y96ok"
 chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
 
+print(os.getcwd())
+parent_dir="/Users/manuelacostafaerman/Desktop/krok/Oleg/venv/bin/python /Users/manuelacostafaerman/Desktop/krok/Oleg/botPython2"
+dir_name = "mail.txt"
+path = os.path.join(parent_dir,dir_name)
+
 @bot.message_handler(func=lambda x: True)
 def start_message(message):
 	text_from_user = message.json["text"]
 	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"ggigiu, {message.chat.id}")
-		bot.send_location(chat_id, latitud=40.465297616884314,longitud=-3.6397970886211115)
+	bot.send_location(chat_id, latitud=40.465297616884314,longitud=-3.6397970886211115)
+	if "contacto" in text_from_user:
+		content = os.listdir(path)
+		for i in content:
+			print(i)
+
 
 
 
@@ -48,9 +58,7 @@ def send_welcome(message):
 
 def start_message(message):
 	text_from_user = message.json["text"]
-	if "office" in text_from_user:
-		bot.send_message(message.chat.id,f"Are you interested in or office ?, {message.chat.id}")
-	bot.send_location(chat_id, latitud=40.465297616884314, longitud=-3.6397970886211115)
+	pass
 
 
 
