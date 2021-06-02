@@ -56,14 +56,16 @@ def send_welcome(message):
 		photo = open('smart-2.png', 'rb')
 		bot.send_photo(chat_id, photo)
 		bot.send_photo(chat_id, "FILEID")
+		markup = telebot.types.ReplyKeyboardMarkup(row_width=2)
+		markup.row("venta", "alquiler")
+		markup.row("airB&B", "otros")
+		bot.send_message(message.chat.id, "What do you need ?", reply_markup=markup)
 
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-	markup = telebot.types.ReplyKeyboardMarkup(row_width=2)
-	markup.row("venta", "alquiler")
-	markup.row("airB&B", "otros")
-	bot.send_message(message.chat.id, "What do you need ?", reply_markup=markup)
+
+
 
 
 @bot.message_handler(commands=['tourism'])
