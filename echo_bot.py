@@ -10,13 +10,14 @@ TOKEN = "1852061994:AAG-pWZsliYmB2jz7RHfSyN0alHfT8y96ok"
 chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
 
+@bot.message_handler(func=lambda x: True)
 def start_message(message):
 	text_from_user = message.json["text"]
 	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"ggigiu, {message.chat.id}")
 		bot.send_location(chat_id, latitud=40.465297616884314, longitud=-3.6397970886211115)
 
-@bot.message_handler(commands=['start'])
+
 def send_welcome(message):
 		bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
 						  " text /buy to see the new propertys in sell or if you are thinking"
