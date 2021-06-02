@@ -39,7 +39,8 @@ def send_welcome(message):
 def start_message(message):
 	text_from_user = message.json["text"]
 	if "office" in text_from_user:
-		bot.send_message(message.chat.id,bot.send_location(chat_id, 40.465297616884314, -3.6397970886211115))
+		bot.send_message(message.chat.id,f"ggigiu, {message.chat.id}")
+		bot.send_location(chat_id, latitud=40.465297616884314, longitud=-3.6397970886211115)
 
 
 
