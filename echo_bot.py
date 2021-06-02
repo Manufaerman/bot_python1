@@ -11,9 +11,7 @@ chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
 
 
-parent_dir = os.getcwd()
-dir_name = "mail.txt"
-path = os.path.join(parent_dir,dir_name)
+
 users = {"id":"actions"}
 
 @bot.message_handler(func=lambda x: True)
@@ -21,7 +19,11 @@ def start_message(message):
 	text_from_user = message.json["text"]
 	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
+		bot.send_location(chat_id, "40.465297616884314", "-3.6397970886211115")
 	elif "contacto" or "mail" in text_from_user:
+		parent_dir = os.getcwd()
+		dir_name = "mail.txt"
+		path = os.path.join(parent_dir, dir_name)
 		bot.send_message(chat_id, "estos son nuestros Email de contacto")
 		content = os.listdir(path)
 		for i in content:
