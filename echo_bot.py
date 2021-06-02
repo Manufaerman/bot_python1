@@ -40,7 +40,14 @@ def send_welcome(message):
 		bot.reply_to(message, "list of properties in Airb∞b?")
 @bot.message_handler(commands=['buy'])
 def send_welcome(message):
-		bot.reply_to(message, "list of properties in sell?")
+	parent_dir = os.getcwd()
+	dir_name = "links.txt"
+	path = os.path.join(parent_dir, dir_name)
+	content = open(path, "r")
+	lineas = content.readlines()
+	bot.reply_to(message, "list of properties in sell?")
+	bot.send_message(chat_id, "estas son nuestras propiedades")
+	bot.send_message(chat_id, f"mail, {lineas}")
 
 def start_message(message):
 	text_from_user = message.json["text"]
