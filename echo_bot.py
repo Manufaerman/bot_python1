@@ -1,7 +1,7 @@
-import telebot
 import os
 import telebot
 from flask import Flask, request
+from telebot import types
 
 #"ESTE ES EL NUEVO BOT"
 
@@ -35,6 +35,11 @@ def send_welcome(message):
 @bot.message_handler(commands=['buy'])
 def send_welcome(message):
 		bot.reply_to(message, "list of properties in sell?")
+
+def start_message(message):
+	text_from_user = message.json["text"]
+	if "office" in text_from_user:
+		bot.send_message(message.chat.id,bot.send_location(chat_id, 40.465297616884314, -3.6397970886211115))
 
 
 
