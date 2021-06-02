@@ -46,7 +46,7 @@ def start_message(message):
 '''
 
 
-
+@bot.message_handler(commands=['start'])
 def send_welcome(message):
 
 		bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
@@ -62,12 +62,9 @@ def send_welcome(message):
 		bot.send_message(message.chat.id, "What do you need ?", reply_markup=markup)
 
 
-@bot.message_handler(commands=['help'])
+
 def send_welcome(message):
 	pass
-
-
-
 
 @bot.message_handler(commands=['tourism'])
 def send_welcome(message):
