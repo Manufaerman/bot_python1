@@ -25,9 +25,9 @@ def start_message(message):
 		dir_name = "mail.txt"
 		path = os.path.join(parent_dir, dir_name)
 		bot.send_message(chat_id, "estos son nuestros Email de contacto")
-		content = os.listdir(path)
-		for i in content:
-			bot.send_message(chat_id,f"mail, {i}")
+		content = open(path, "r")
+		lineas = content.readlines()
+		bot.send_message(chat_id,f"mail, {lineas}")
 
 '''
 @bot.message_handler(func=lambda x: x.text.startwith("donde"))
