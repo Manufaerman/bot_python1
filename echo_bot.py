@@ -17,10 +17,10 @@ users = {"id":"actions"}
 @bot.message_handler(func=lambda x: True)
 def start_message(message):
 	text_from_user = message.json["text"]
-	if "office" or "oficina" in text_from_user:
+	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
 		bot.send_location(chat_id, "40.465297616884314", "-3.6397970886211115")
-	elif "contacto" or "mail" or "contact" or "email" in text_from_user:
+	elif "contacto" or "mail" in text_from_user:
 		parent_dir = os.getcwd()
 		dir_name = "mail.txt"
 		path = os.path.join(parent_dir, dir_name)
@@ -29,26 +29,8 @@ def start_message(message):
 		lineas = content.readlines()
 		bot.send_message(chat_id,f"mail, {lineas}")
 
-'''
-@bot.message_handler(func=lambda x: x.text.startwith("donde"))
-def start_message(message):
-
-	text_from_user = message.json["text"]
-	if "office" in text_from_user:
-		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
-		bot.send_location(chat_id, latitud=40.465297616884314, longitud=-3.6397970886211115)
-	if "contacto" or "mail" in text_from_user:
-		bot.send_message(chat_id, "estos son nuestros Email de contacto")
-		content = os.listdir(path)
-		for i in content:
-			bot.send_message(chat_id,f"mail, {i}")
-
-'''
-
-
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-
 		bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
 						  " text /buy to see the new propertys in sell or if you are thinking"
 							  "in make tourism in madrid /tourism to si or properties in rent"
@@ -56,15 +38,15 @@ def send_welcome(message):
 		photo = open('smart-2.png', 'rb')
 		bot.send_photo(chat_id, photo)
 		bot.send_photo(chat_id, "FILEID")
-		markup = telebot.types.ReplyKeyboardMarkup(row_width=2)
-		markup.row("venta", "alquiler")
-		markup.row("airB&B", "otros")
-		bot.send_message(message.chat.id, "What do you need ?", reply_markup=markup)
 
 
-
+@bot.message_handler(commands=['help'])
 def send_welcome(message):
-	pass
+	markup = telebot.types.ReplyKeyboardMarkup(row_width=2)
+	markup.row("venta", "alquiler")
+	markup.row("airB&B", "otros")
+	bot.send_message(message.chat.id, "What do you need ?", reply_markup=markup)
+
 
 @bot.message_handler(commands=['tourism'])
 def send_welcome(message):
