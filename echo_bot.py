@@ -60,7 +60,7 @@ def start_message(message):
 	id_from_user = message.json["id"]
 	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
-		bot.send_location(id_from_user, "40.465297616884314", "-3.6397970886211115")
+		bot.send_location(message.chat.id, "40.465297616884314", "-3.6397970886211115")
 	elif "contacto" or "mail" in text_from_user:
 		parent_dir = os.getcwd()
 		dir_name = "mail.txt"
