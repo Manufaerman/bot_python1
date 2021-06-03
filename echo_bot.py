@@ -59,16 +59,16 @@ def start_message(message):
 	text_from_user = message.json["text"]
 	id_from_user = message.json["id"]
 	if "office" in text_from_user:
-		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
+		bot.(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
 		bot.send_location(message.chat.id, "40.465297616884314", "-3.6397970886211115")
 	elif "contacto" or "mail" in text_from_user:
 		parent_dir = os.getcwd()
 		dir_name = "mail.txt"
 		path = os.path.join(parent_dir, dir_name)
-		bot.send_message(message.id_from_user, "estos son nuestros Email de contacto")
+		bot.reply_to(message, "estos son nuestros Email de contacto")
 		content = open(path, "r")
 		lineas = content.readlines()
-		bot.send_message(id_from_user,f"mail, {lineas}")
+		bot.reply_to(message,f"mail, {lineas}")
 
 
 
