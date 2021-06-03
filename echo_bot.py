@@ -24,7 +24,7 @@ def send_welcome(message):
 							  "in make tourism in madrid /tourism to si or properties in rent"
 							  "or /help if you have any hesitatation")
 		photo = open('smart-2.png', 'rb')
-		bot.send_photo(user_id, photo)
+		bot.reply_to_message_id(user_id, photo)
 
 
 
@@ -57,17 +57,18 @@ def start_message(message):
 @bot.message_handler(func=lambda x: True)
 def start_message(message):
 	text_from_user = message.json["text"]
+	id_from_user = message.json["id"]
 	if "office" in text_from_user:
 		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
-		bot.send_location(chat_id, "40.465297616884314", "-3.6397970886211115")
+		bot.send_location(id_from_user, "40.465297616884314", "-3.6397970886211115")
 	elif "contacto" or "mail" in text_from_user:
 		parent_dir = os.getcwd()
 		dir_name = "mail.txt"
 		path = os.path.join(parent_dir, dir_name)
-		bot.send_message(chat_id, "estos son nuestros Email de contacto")
+		bot.send_message(message.id_from_user, "estos son nuestros Email de contacto")
 		content = open(path, "r")
 		lineas = content.readlines()
-		bot.send_message(chat_id,f"mail, {lineas}")
+		bot.send_message(id_from_user,f"mail, {lineas}")
 
 
 
