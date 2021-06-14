@@ -1,11 +1,11 @@
 import os
+import self as self
 import telebot
 from flask import Flask, request
 
 
-#"ESTE ES EL NUEVO BOT"
 
-app  = Flask(__name__)
+app = Flask(__name__)
 TOKEN = "1852061994:AAG-pWZsliYmB2jz7RHfSyN0alHfT8y96ok"
 chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
@@ -13,18 +13,18 @@ bot = telebot.TeleBot(TOKEN)
 
 
 users = {"id":"actions"}
-user_id={"id"}
 
 
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-		bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
+	photo = open('smart-2.png', 'rb')
+	bot.reply_to(message, "Howdy, how are you doing?, im here to help you !"
 						  " text /buy to see the new propertys in sell or if you are thinking"
 							  "in make tourism in madrid /tourism to si or properties in rent"
-							  "or /help if you have any hesitatation")
-		photo = open('smart-2.png', 'rb')
-		bot.reply_to_message_id(user_id, photo)
+							  "or /help if you have any hesitatation",photo)
+
+
 
 
 
@@ -39,16 +39,15 @@ def send_welcome(message):
 @bot.message_handler(commands=['tourism'])
 def send_welcome(message):
 		bot.reply_to(message, "list of properties in Airb∞b?")
-@bot.message_handler(commands=['buy'])
+
+@bot.message_handler(self, commands=['buy'])
 def send_welcome(message):
 	parent_dir = os.getcwd()
 	dir_name = "links.txt"
 	path = os.path.join(parent_dir, dir_name)
 	content = open(path, "r")
 	lineas = content.readlines()
-	bot.reply_to(message, "list of properties in sell?")
-	bot.send_message(chat_id, "estas son nuestras propiedades")
-	bot.send_message(chat_id, f"mail, {lineas}")
+	bot.reply_to(message, f"mail, {lineas}")
 
 def start_message(message):
 	text_from_user = message.json["text"]
@@ -59,16 +58,16 @@ def start_message(message):
 	text_from_user = message.json["text"]
 	id_from_user = message.json["id"]
 	if "office" in text_from_user:
-		bot.(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
+		bot.send_message(message.chat.id,f"Nuestra oficina se encuentra en Carretera de Canillas, 138, {message.chat.id}")
 		bot.send_location(message.chat.id, "40.465297616884314", "-3.6397970886211115")
 	elif "contacto" or "mail" in text_from_user:
 		parent_dir = os.getcwd()
 		dir_name = "mail.txt"
 		path = os.path.join(parent_dir, dir_name)
-		bot.reply_to(message, "estos son nuestros Email de contacto")
+		bot.send_message(message.id_from_user, "")
 		content = open(path, "r")
 		lineas = content.readlines()
-		bot.reply_to(message,f"mail, {lineas}")
+		bot.send_message(id_from_user,f"mail, {lineas}")
 
 
 
