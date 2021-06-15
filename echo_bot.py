@@ -2,12 +2,12 @@ import os
 import self as self
 import telebot
 from flask import Flask, request
+import TOKEN
+import chat_id
 
 
 
 app = Flask(__name__)
-TOKEN = "1864985053:AAG60rWPuy_b_KgXwyUpc3qXIFAOmyvMklw"
-chat_id = "802134560"
 bot = telebot.TeleBot(TOKEN)
 
 
