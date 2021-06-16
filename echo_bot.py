@@ -2,16 +2,12 @@ import os
 import re
 import telebot
 from flask import Flask, request
-
-from chat_id import chat_id
-TOKEN=os.environ.get("TOKEN")
+TOKEN = os.environ.get("TOKEN")
+chat_id = os.environ.get("chat_id")
 app = Flask(__name__)
 bot = telebot.TeleBot(TOKEN)
 
 users = {"id": "actions"}
-
-
-
 
 
 @bot.message_handler(commands=['start'])
